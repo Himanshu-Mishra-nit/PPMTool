@@ -1,9 +1,12 @@
 package io.agileintelligence.ppmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "project")
@@ -19,7 +22,7 @@ public class Project implements Serializable {
 	@Column(name="name")
 	private String name;
 
-	@Column(name="identifier")
+	@Column(name="identifier", updatable = false, unique = true)
 	private String identifier;
 	
 	@Column(name="description")
